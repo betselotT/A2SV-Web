@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo-List App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Todo-List App</h1>
+
+      <form id="listingTask">
+        <label for="task">Task:</label>
+        <input
+          type="text"
+          id="task"
+          name="task"
+          placeholder="Write your task here"
+        />
+        <input type="submit" id="submit" value="Add Task" />
+      </form>
+
+      <table id="listingTable">
+        <thead>
+          <tr>
+            <th>Task</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Add Tasks Below</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="todo.js"></script>
+  </body>
+</html>
