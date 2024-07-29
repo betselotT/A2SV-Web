@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    padding: 0;
+}
+
+th, td {
+    border: 1px solid gray;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: olive;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+h1 {
+    padding-bottom: 15px;
+}
+
+#task {
+    margin-right: 10px;
+}
+
+#submit {
+    padding: 5px;
+    background-color: olive;
+}
