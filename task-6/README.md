@@ -1,4 +1,4 @@
-# Building a Job Listing Application
+# Building Job Listing Application
 
 ## The First Page
 
