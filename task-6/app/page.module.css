@@ -1,0 +1,41 @@
+.all {
+  padding: 30px 0px 20px 40px;
+}
+
+.h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 38.4px;
+  text-align: left;
+  color: #25324b;
+}
+
+.p1 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25.6px;
+  text-align: left;
+  color: #7c8493;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 919px;
+  height: Hug (68px) px;
+}
+
+.btn {
+  font-weight: bold;
+}
+
+.divide {
+  padding-bottom: 30px;
+}
+
+.arrow {
+  display: flex;
+  gap: 5px;
+}
