@@ -1,51 +1,35 @@
 import React from "react";
-import path from "path";
-import { Job } from "@/types/job";
-import fs from "fs";
 
-interface JobPost {
-  params: { id: string };
+interface PropType {
+  title: string;
+  desc: string;
+  responsibilities: string;
+  ideal_candidate: string;
+  when_where: string;
 }
 
-const getJob = async (id: string): Promise<Job | undefined> => {
-  const filePath = path.join(process.cwd(), "json", "jobs.json");
-  const jsonData = await fs.promises.readFile(filePath, "utf-8");
-  const jobs = JSON.parse(jsonData);
-  const currJobs: Job[] = jobs.job_postings;
-  return currJobs.find((job) => job.id === id);
-};
-
-const Left = async ({ params }: JobPost) => {
-  const { id } = params;
-  const job = await getJob(id);
+const Left = ({
+  title,
+  desc,
+  responsibilities,
+  ideal_candidate,
+  when_where,
+}: PropType) => {
   return (
     <div className="w-9/12">
       <h1 className="text-xl pb-3 font-black">Description</h1>
-      <p>{job?.description}</p>
+      <p>{desc}</p>
       <h1 className="text-xl pb-3 pt-10 font-black">Responsibilities</h1>
-      {job?.responsibilities.map((jo) => (
-        <div className="flex">
-          <Check />
-          <p className="pl-2 pb-2">{jo}</p>
-        </div>
-      ))}
+      {responsibilities}
       <h1 className="text-xl pb-3 pt-10 font-black">Ideal Candidate we want</h1>
       <div className="flex">
         <Hyphen />
-        <p className="pl-2">
-          {job?.ideal_candidate.age} {job?.ideal_candidate.gender} {job?.title}
-        </p>
+        <p className="pl-2">{ideal_candidate}</p>
       </div>
-      {job?.ideal_candidate.traits.map((jo) => (
-        <div className="flex">
-          <Hyphen />
-          <p className="pl-2">{jo}</p>
-        </div>
-      ))}
       <h1 className="text-xl pb-3 pt-10 font-black">When & Where</h1>
       <div className="flex">
         <Location />
-        <p className="pl-2">{job?.when_where}</p>
+        <p className="pl-2">{when_where}</p>
       </div>
     </div>
   );

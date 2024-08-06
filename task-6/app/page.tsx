@@ -1,20 +1,31 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Card from "./components/Card/Card";
 import styles from "./page.module.css";
-import path from "path";
 import { Job } from "@/types/job";
-import fs from "fs";
 
-const getJobs = async (): Promise<Job[] | undefined> => {
-  const filePath = path.join(process.cwd(), "json", "jobs.json");
-  const jsonData = await fs.promises.readFile(filePath, "utf-8");
-  const jobs = JSON.parse(jsonData);
-  const currJobs: Job[] = jobs.job_postings;
-  return currJobs;
-};
+const page = () => {
+  const [jobs, setJobs] = useState<Job[] | null>([]);
+  const [loading, setLoading] = useState(true);
 
-const page = async () => {
-  const jobs = await getJobs();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          "https://akil-backend.onrender.com/opportunities/search"
+        );
+        const result = await res.json();
+        setJobs(result.data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div>
       <div className={styles.top}>
@@ -36,9 +47,9 @@ const page = async () => {
             key={job.id}
             title={job.title}
             desc={job.description}
-            location={job.about.location}
-            company={job.company}
-            logo={job.image}
+            location={job.location}
+            company={job.orgName}
+            logo={job.logoUrl}
           />
         ))}
       </div>

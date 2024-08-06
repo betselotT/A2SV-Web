@@ -1,23 +1,24 @@
 import React from "react";
-import path from "path";
-import { Job } from "@/types/job";
-import fs from "fs";
 
 interface JobPost {
-  params: { id: string };
+  posted_on: string;
+  deadline: string;
+  location: string;
+  start_date: string;
+  end_date: string;
+  categories: string[];
+  required_skills: string[];
 }
 
-const getJob = async (id: string): Promise<Job | undefined> => {
-  const filePath = path.join(process.cwd(), "json", "jobs.json");
-  const jsonData = await fs.promises.readFile(filePath, "utf-8");
-  const jobs = JSON.parse(jsonData);
-  const currJobs: Job[] = jobs.job_postings;
-  return currJobs.find((job) => job.id === id);
-};
-
-const Right = async ({ params }: JobPost) => {
-  const { id } = params;
-  const job = await getJob(id);
+const Right = ({
+  posted_on,
+  deadline,
+  location,
+  start_date,
+  end_date,
+  categories,
+  required_skills,
+}: JobPost) => {
   return (
     <div className="pl-16 text-left">
       <h1 className="text-xl pb-3 font-black">About</h1>
@@ -25,55 +26,55 @@ const Right = async ({ params }: JobPost) => {
         <Plus className="mr-3" />
         <div>
           <p className="text-gray-500">Posted On</p>
-          <p className="font-bold">{job?.about.posted_on}</p>
+          <p className="font-bold">{posted_on}</p>
         </div>
       </div>
       <div className="pb-3 flex items-start">
         <Fire className="mr-3" />
         <div>
           <p className="text-gray-500">Deadline</p>
-          <p className="font-bold">{job?.about.deadline}</p>
+          <p className="font-bold">{deadline}</p>
         </div>
       </div>
       <div className="pb-3 flex items-start">
         <Location className="mr-3" />
         <div>
           <p className="text-gray-500">Location</p>
-          <p className="font-bold">{job?.about.location}</p>
+          <p className="font-bold">{location}</p>
         </div>
       </div>
       <div className="pb-3 flex items-start">
         <Calendar className="mr-3" />
         <div>
           <p className="text-gray-500">Start Date</p>
-          <p className="font-bold">{job?.about.start_date}</p>
+          <p className="font-bold">{start_date}</p>
         </div>
       </div>
       <div className="pb-3 flex items-start">
         <Calendar className="mr-3" />
         <div>
           <p className="text-gray-500">End Date</p>
-          <p className="font-bold">{job?.about.end_date}</p>
+          <p className="font-bold">{end_date}</p>
         </div>
       </div>
       <h1 className="text-xl pt-8 font-black">Categories</h1>
-      <div className="pt-5">
-        <button className="bg-orange-100 hover:bg-blue-700 text-orange-300 font-bold py-2 px-4 rounded-full mr-3">
-          {job?.about.categories[0]}
-        </button>
-        <button className="bg-green-100 hover:bg-blue-700 text-green-400 font-bold py-2 px-4 rounded-full">
-          {job?.about.categories[1]}
-        </button>
+      <div className="grid grid-cols- text-sm mt-3 gap-2 w-[70%]">
+        {categories.map((catagory, i) => (
+          <p
+            className={`bg-[#FFB836] bg-opacity-15 text-[#FFB836] py-1 px-2 rounded-full text-center`}
+          >
+            {catagory}
+          </p>
+        ))}
       </div>
       <h1 className="text-xl pt-8 font-black">Required Skills</h1>
-      {job?.about.required_skills.map((jo, index) => (
-        <button
-          key={index}
-          className="bg-blue-100 hover:bg-blue-700 text-blue-700 py-2 px-4 rounded-full mt-4 mr-1"
-        >
-          {jo}
-        </button>
-      ))}
+      <div className="flex flex-wrap gap-2 mt-3">
+        {required_skills.map((required_skill) => (
+          <p className="text-[#4640DE] bg-[#4640DE] bg-opacity-5 rounded p-2">
+            {required_skill}
+          </p>
+        ))}
+      </div>
     </div>
   );
 };
