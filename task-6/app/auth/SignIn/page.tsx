@@ -48,7 +48,7 @@ const SignIn = () => {
 
       if (response.status === 200) {
         console.log(response);
-        Cookie.set("jobPlaceToken", response.data.data.refreshToken);
+        Cookie.set("jobPlaceToken", response.data.data.accessToken);
         router.push("/");
       } else {
         console.log("Something went wrong");

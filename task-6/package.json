@@ -12,6 +12,7 @@
     "@fontsource/poppins": "^5.0.14",
     "@hookform/resolvers": "^3.9.0",
     "axios": "^1.7.3",
+    "cookie": "^0.6.0",
     "js-cookie": "^3.0.5",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
