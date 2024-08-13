@@ -41,14 +41,19 @@ const page = () => {
       <div className={styles.top}>
         <div className="flex gap-9">
           <div className={styles.divide}>
-            <Link href="/" className={styles.h1}>
-              Opportunities
-            </Link>
-            <Link href="/bookmarks" className={styles.p1}>
-              Showing {jobs?.length} results
-            </Link>
+            <div className="flex-col">
+              <Link href="/" className={styles.h1}>
+                Opportunities
+              </Link>
+              <p className={styles.p1}>Showing {jobs?.length} results</p>
+            </div>
           </div>
-          <h1 className="font-black text-3xl">Bookmarks</h1>
+          <Link
+            href="/bookmarks"
+            className="font-black text-3xl text-header-color"
+          >
+            Bookmarks
+          </Link>
         </div>
         <div className={styles.arrow}>
           <p>

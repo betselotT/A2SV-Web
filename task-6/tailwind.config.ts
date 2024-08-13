@@ -20,6 +20,7 @@ const config: Config = {
         "custom-blue": "rgba(70, 64, 222, 1)",
         "darker-blue": "#2D298E",
         "border-color": "rgba(70, 64, 222, 0.4)",
+        "header-color": "#25324b",
       },
     },
   },
